@@ -43,7 +43,7 @@ export default function CountrySelector() {
   if (loading) return <p>Loading...</p>;
   
   if (error) return <p>Error...</p>;
-    console.log(countries);
+
   return (
     <Container>
       <h2>Currently Showing {selectedCountry}</h2>
