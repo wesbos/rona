@@ -1,5 +1,5 @@
+import { Fragment } from 'react';
 import { createGlobalStyle } from 'styled-components';
-import useStats from '../utils/useStats';
 import Stats from '../components/Stats';
 import CountrySelector from '../components/CountrySelector';
 
@@ -11,10 +11,10 @@ const GlobalStyle = createGlobalStyle`
 
 export default function IndexPage() {
   return (
-    <div>
+    <Fragment>
       <GlobalStyle />
-      <Stats url="https://covid19.mathdro.id/api"></Stats>
-      <CountrySelector></CountrySelector>
-    </div>
+      <Stats url="https://covid19.mathdro.id/api" />
+      <CountrySelector />
+    </Fragment>
   );
 }
