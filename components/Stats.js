@@ -1,20 +1,41 @@
 import styled from 'styled-components';
+import { isMobile } from "react-device-detect";
 import useStats from '../utils/useStats';
 
-const StatGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 1rem;
+const Container = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: ${isMobile ? "column" : "row"};
+  justify-content: space-around;
+  align-items: center
 `;
+
 const StatBlock = styled.div`
+  width: 8rem;
   background: #f2f2f2;
-  font-size: 2rem;
-  padding: 2rem;
+  padding: 1rem;
   border-radius: 2rem;
-  display: grid;
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-items: center;
   text-align: center;
+  color: #000;
+
+  &:nth-child(2) {
+    margin: ${isMobile ? "1rem 0" : "0 2rem"};
+  }
+`;
+
+const BlockTitle = styled.h3`
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 300;
+`;
+
+const BlockSpan = styled.span`
+  font-size: 1.6rem;
+  font-weight: 700;
 `;
 
 export default function Stats({ url }) {
@@ -25,19 +46,19 @@ export default function Stats({ url }) {
   if (error) return <p>Error: {error.message}</p>;
   
   return (
-    <StatGrid>
+    <Container>
       <StatBlock>
-        <h3>Confirmed:</h3>
-        <span>{stats.confirmed.value}</span>
+        <BlockTitle>Confirmed</BlockTitle>
+        <BlockSpan>{stats.confirmed.value}</BlockSpan>
       </StatBlock>
       <StatBlock>
-        <h3>Deaths:</h3>
-        <span>{stats.deaths.value}</span>
+        <BlockTitle>Deaths</BlockTitle>
+        <BlockSpan>{stats.deaths.value}</BlockSpan>
       </StatBlock>
       <StatBlock>
-        <h3>Recovered:</h3>
-        <span>{stats.recovered.value}</span>
+        <BlockTitle>Recovered</BlockTitle>
+        <BlockSpan>{stats.recovered.value}</BlockSpan>
       </StatBlock>
-    </StatGrid>
+    </Container>
   );
 }
