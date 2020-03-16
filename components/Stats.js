@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import useStats from '../utils/useStats';
+import styled from "styled-components";
+import useStats from "../utils/useStats";
 
 const StatGrid = styled.div`
   display: grid;
@@ -19,23 +19,28 @@ const StatBlock = styled.div`
 
 export default function Stats({ url }) {
   const { stats, loading, error } = useStats(url);
-  console.log(stats, loading, error);
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error...</p>;
+  // console.log(stats, loading, error);
+  if (loading) return <h1>Loading ...</h1>;
   return (
-    <StatGrid>
-      <StatBlock>
-        <h3>Confirmed:</h3>
-        <span>{stats.confirmed.value}</span>
-      </StatBlock>
-      <StatBlock>
-        <h3>Deaths:</h3>
-        <span>{stats.deaths.value}</span>
-      </StatBlock>
-      <StatBlock>
-        <h3>Recovered:</h3>
-        <span>{stats.recovered.value}</span>
-      </StatBlock>
-    </StatGrid>
+    <>
+      {error ? (
+        <p>{error}</p>
+      ) : (
+        <StatGrid>
+          <StatBlock>
+            <h3>Confirmed:</h3>
+            <span>{stats.confirmed ? stats.confirmed.value : "NA"}</span>
+          </StatBlock>
+          <StatBlock>
+            <h3>Deaths:</h3>
+            <span>{stats.deaths ? stats.deaths.value : "NA"}</span>
+          </StatBlock>
+          <StatBlock>
+            <h3>Recovered:</h3>
+            <span>{stats.recovered ? stats.recovered.value : "NA"}</span>
+          </StatBlock>
+        </StatGrid>
+      )}
+    </>
   );
 }
