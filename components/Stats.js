@@ -26,15 +26,15 @@ export default function Stats({ url }) {
     <StatGrid>
       <StatBlock>
         <h3>Confirmed:</h3>
-        <span>{stats.confirmed.value}</span>
+        <span>{stats && stats.confirmed && stats.confirmed.value || 0}</span>
       </StatBlock>
       <StatBlock>
         <h3>Deaths:</h3>
-        <span>{stats.deaths.value}</span>
+        <span>{stats && stats.deaths && stats.deaths.value || 0 }</span>
       </StatBlock>
       <StatBlock>
         <h3>Recovered:</h3>
-        <span>{stats.recovered.value}</span>
+        <span>{stats && stats.recovered && stats.recovered.value || 0}</span>
       </StatBlock>
     </StatGrid>
   );
