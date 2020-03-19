@@ -8,7 +8,6 @@ export default function CountrySelector() {
   );
   const [selectedCountry, setSelectedCountry] = useState('USA');
   if (loading) return <p>Loading...</p>;
-  if (loading) return <p>Loading...</p>;
   if (error) return <p>Error...</p>;
 
   return (
