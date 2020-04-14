@@ -10,7 +10,7 @@ export default function CountrySelector() {
   if (loading) return <p>Loading...</p>;
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error...</p>;
-
+  
   return (
     <div>
       <h2>Currently Showing {selectedCountry}</h2>
@@ -21,11 +21,11 @@ export default function CountrySelector() {
       >
         {Object.entries(countries.countries).map(([country, code]) => (
           <option
-            selected={selectedCountry === countries.iso3[code]}
-            key={code}
-            value={countries.iso3[code]}
+            selected={selectedCountry === code.name}
+            key={country}
+            value={code.iso3}
           >
-            {country}
+            {code.name}
           </option>
         ))}
       </select>
